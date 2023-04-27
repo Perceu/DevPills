@@ -1,5 +1,5 @@
 """
-Script em python para escrever na tela!
+Definindo uma função para escrever no console
 """
 
 def hello_world(text):
