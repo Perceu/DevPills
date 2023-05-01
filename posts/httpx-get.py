@@ -7,5 +7,9 @@ Dependencias:
 """
 import httpx
 
-r = httpx.get('https://raw.githubusercontent.com/Perceu/DevPills/main/statics/contatos.json')
+url_base = 'https://raw.githubusercontent.com'
+url_repo = '/Perceu/DevPills/main/statics'
+
+r = httpx.get(f"{url_base}{url_repo}/contatos.json")
+
 print(r.json())

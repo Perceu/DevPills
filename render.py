@@ -61,12 +61,12 @@ img = Image.open('build/codigo.png')
 # Redimensionar a imagem para caber nas dimensões desejadas
 img_width, img_height = img.size
 if img_width > IMAGE_WIDTH - PADDING * 2:
-    ratio = (IMAGE_WIDTH - PADDING * 2) / img_width
+    ratio = (IMAGE_WIDTH - 6 - (PADDING * 2)-5) / img_width
     img_width = int(img_width * ratio)
     img_height = int(img_height * ratio)
 
 if img_height > IMAGE_HEIGHT - PADDING * 2:
-    ratio = (IMAGE_HEIGHT - PADDING * 2) / img_height
+    ratio = (IMAGE_HEIGHT - 6 - (PADDING * 2)) / img_height
     img_width = int(img_width * ratio)
     img_height = int(img_height * ratio)
 
