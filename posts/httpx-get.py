@@ -1,5 +1,9 @@
 """
-Buscando um json e imprimindo na tela
+Buscando um json na internet e imprimindo na tela
+
+Dependencias:
+>> pip install httpx
+
 """
 import httpx
 
