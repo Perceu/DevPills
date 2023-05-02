@@ -1,3 +1,6 @@
 pygments
 pillow
 httpx
+fastapi
+starlette[full]
+typer[all]
