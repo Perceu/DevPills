@@ -3,6 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 from generator.settings import Settings
 from generator.helpers import DrawHelpers
 
+
 class Polaroid():
 
     signature = "@perceubertoletti.dev"
@@ -28,10 +29,11 @@ class Polaroid():
         font = self.get_font()
         powered_by = self.get_powered_by()
 
-        final_image = Image.new('RGBA', (Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT), (0, 0, 0, 255))       
+        final_image = Image.new('RGBA', (Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT), Settings.BACKGROUND_RGBA)       
         draw = ImageDraw.Draw(final_image)
+        
         draw.rounded_rectangle((Settings.PADDING - 25, Settings.PADDING - 25, Settings.IMAGE_WIDTH - Settings.PADDING + 25, Settings.IMAGE_HEIGHT - Settings.PADDING + 25), radius=10, fill='white', outline='#ccc', width=3)
-        draw.rounded_rectangle((Settings.PADDING, Settings.PADDING, Settings.IMAGE_WIDTH - Settings.PADDING, Settings.IMAGE_HEIGHT - Settings.PADDING - 100), radius=10, fill='#282a36', outline='#F0F0F0', width=5)
+        draw.rounded_rectangle((Settings.PADDING, Settings.PADDING, Settings.IMAGE_WIDTH - Settings.PADDING, Settings.IMAGE_HEIGHT - Settings.PADDING - 100), radius=10, fill=Settings.CODE_THEME.background_color, outline='#F0F0F0', width=5)
         draw.text((Settings.PADDING+10, Settings.IMAGE_HEIGHT - Settings.PADDING - 100), self.signature, font=font, fill=(100, 100, 100))
         final_image.paste(powered_by, (Settings.IMAGE_WIDTH - Settings.PADDING - 180, Settings.IMAGE_HEIGHT - Settings.PADDING - 90), powered_by)
 
@@ -59,17 +61,17 @@ class Polaroid():
         font_title = self.get_font_title()
         powered_by = self.get_powered_by()
 
-        final_image = Image.new('RGBA', (Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT), (0, 0, 0, 255))
+        final_image = Image.new('RGBA', (Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT), Settings.BACKGROUND_RGBA)
         draw = ImageDraw.Draw(final_image)
         draw.rounded_rectangle((Settings.PADDING - 25, Settings.PADDING - 25, Settings.IMAGE_WIDTH - Settings.PADDING + 25, Settings.IMAGE_HEIGHT - Settings.PADDING + 25), radius=10, fill='white', outline='#ccc', width=3)
-        draw.rounded_rectangle((Settings.PADDING, Settings.PADDING, Settings.IMAGE_WIDTH - Settings.PADDING, Settings.IMAGE_HEIGHT - Settings.PADDING - 100), radius=10, fill='#282a36', outline='#F0F0F0', width=5)
+        draw.rounded_rectangle((Settings.PADDING, Settings.PADDING, Settings.IMAGE_WIDTH - Settings.PADDING, Settings.IMAGE_HEIGHT - Settings.PADDING - 100), radius=10, fill=Settings.CODE_THEME.background_color, outline='#F0F0F0', width=5)
         draw.text((Settings.PADDING+10, Settings.IMAGE_HEIGHT - Settings.PADDING - 100), self.signature, font=font, fill=(100, 100, 100))
         final_image.paste(powered_by, (Settings.IMAGE_WIDTH - Settings.PADDING - 180, Settings.IMAGE_HEIGHT - Settings.PADDING - 90), powered_by)
 
         draw_cape = ImageDraw.Draw(final_image)
-        draw_cape.text((Settings.PADDING+25, Settings.PADDING+25), "Code Snippet", font=font, fill=(200, 200, 200))
+        draw_cape.text((Settings.PADDING+25, Settings.PADDING+25), "Code Snippet", font=font, fill=DrawHelpers.invertColor(Settings.CODE_THEME.background_color))
         text_width, text_height = DrawHelpers.get_text_dimensions(self.title.title(), font_title)
-        draw_cape.text(((Settings.IMAGE_WIDTH-text_width)//2, int(Settings.IMAGE_HEIGHT/2)+100), self.title.title(), font=font_title, fill=(200, 200, 200))
+        draw_cape.text(((Settings.IMAGE_WIDTH-text_width)//2, int(Settings.IMAGE_HEIGHT/2)+100), self.title.title(), font=font_title, fill=DrawHelpers.invertColor(Settings.CODE_THEME.background_color))
         logo = self.get_logo()
         width_logo, height_logo = logo.size
         final_image.paste(logo, (int(Settings.IMAGE_WIDTH/2)-int(width_logo/2), int(Settings.IMAGE_HEIGHT/2)-200), logo)

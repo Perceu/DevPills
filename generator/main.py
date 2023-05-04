@@ -23,7 +23,7 @@ class Pub():
             raise Exception('seu algoritmo deve conter até 30 linhas')
 
         # Configurações do Pygments
-        formatter = ImageFormatter(style="dracula", line_number_bg='#282a36', font='Fira Code', font_size=Settings.SIZE_FONT)
+        formatter = ImageFormatter(style=Settings.CODE_THEME, line_number_bg=Settings.CODE_THEME.background_color, font='Fira Code', font_size=Settings.SIZE_FONT)
         code = highlight(''.join(CODE), PythonLexer(), formatter)
 
         with open(f'{Settings.BASE_PATH}/build/codigo.png', 'wb') as f:
@@ -32,6 +32,7 @@ class Pub():
         return Image.open(f'{Settings.BASE_PATH}/build/codigo.png')
 
     def generate(self):
+        
         img_codigo = self.gerar_img_codigo()
         gerador = self.template(self.title, img_codigo, f"{Settings.BASE_PATH}/build/{self.title}")
         gerador.run()

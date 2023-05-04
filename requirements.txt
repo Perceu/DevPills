@@ -4,3 +4,5 @@ httpx
 fastapi
 starlette[full]
 typer[all]
+uvicorn
+flask
