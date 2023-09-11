@@ -4,7 +4,7 @@ from generator.settings import Settings
 from generator.helpers import DrawHelpers
 
 
-class Polaroid():
+class PolaroidPhp():
 
     signature = "@perceubertoletti.dev"
 
@@ -23,7 +23,7 @@ class Polaroid():
         return Image.open(Settings.POWERED_BY).convert('RGBA')
     
     def get_logo(self):
-        return Image.open(Settings.PYTHON_LOGO)
+        return Image.open(Settings.PHP_LOGO)
     
     def generate(self):
         font = self.get_font()
@@ -74,7 +74,7 @@ class Polaroid():
         draw_cape.text(((Settings.IMAGE_WIDTH-text_width)//2, int(Settings.IMAGE_HEIGHT/2)+100), self.title.title(), font=font_title, fill=DrawHelpers.invertColor(Settings.CODE_THEME.background_color))
         logo = self.get_logo()
         width_logo, height_logo = logo.size
-        final_image.paste(logo, (int(Settings.IMAGE_WIDTH/2)-int(width_logo/2), int(Settings.IMAGE_HEIGHT/2)-200), logo)
+        final_image.paste(logo, (int(Settings.IMAGE_WIDTH/2)-int(width_logo/2), int(Settings.IMAGE_HEIGHT/2)-300), logo)
         final_image.save(f"{self.output}_capa.png")
     
     def run(self):
