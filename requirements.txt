@@ -6,3 +6,4 @@ starlette[full]
 typer[all]
 uvicorn
 flask
+matplotlib

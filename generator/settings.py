@@ -1,7 +1,7 @@
 import os 
 # from pygments.styles.tango import TangoStyle as Style 
-# from pygments.styles.vs import VisualStudioStyle as Style 
-from pygments.styles.dracula import DraculaStyle as Style 
+from pygments.styles.vs import VisualStudioStyle as Style 
+# from pygments.styles.dracula import DraculaStyle as Style 
 
 class Settings():
     IMAGE_WIDTH = 1080
