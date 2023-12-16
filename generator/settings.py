@@ -1,6 +1,6 @@
 import os 
-#from pygments.styles.tango import TangoStyle as Style 
-#from pygments.styles.vs import VisualStudioStyle as Style 
+# from pygments.styles.tango import TangoStyle as Style 
+# from pygments.styles.vs import VisualStudioStyle as Style 
 from pygments.styles.dracula import DraculaStyle as Style 
 
 class Settings():
@@ -14,6 +14,7 @@ class Settings():
     POWERED_BY = f'{BASE_PATH}/statics/powered.png'
     PYTHON_LOGO = f'{BASE_PATH}/statics/python.png'
     PHP_LOGO = f'{BASE_PATH}/statics/php.png'
+    BUN_LOGO = f'{BASE_PATH}/statics/bun.png'
     FONT_FACE = f'{BASE_PATH}/statics/FiraCode.ttf'
     BACKGROUND_RGBA = (0,0,0,255)
     CODE_THEME = Style
