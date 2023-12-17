@@ -15,6 +15,8 @@ class Settings():
     PYTHON_LOGO = f'{BASE_PATH}/statics/python.png'
     PHP_LOGO = f'{BASE_PATH}/statics/php.png'
     BUN_LOGO = f'{BASE_PATH}/statics/bun.png'
+    GO_LOGO = f'{BASE_PATH}/statics/go.png'
+    RUST_LOGO = f'{BASE_PATH}/statics/rust.png'
     FONT_FACE = f'{BASE_PATH}/statics/FiraCode.ttf'
     BACKGROUND_RGBA = (0,0,0,255)
     CODE_THEME = Style

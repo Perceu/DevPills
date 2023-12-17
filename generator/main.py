@@ -1,6 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 from pygments import highlight
-from pygments.lexers import get_lexer_by_name
 from pygments.formatters import ImageFormatter
 from generator.settings import Settings
 

@@ -2,3 +2,5 @@
 build/*.png
 __pycache__/
 *.db
+*.mod
+*.sum

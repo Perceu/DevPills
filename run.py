@@ -2,8 +2,10 @@ import os
 import typer
 from generator.main import Pub
 from generator.templates.polaroidPython import PolaroidPython
+from generator.templates.polaroidGo import PolaroidGo
 from generator.templates.polaroidPhp import PolaroidPhp
 from generator.templates.polaroidBun import PolaroidBun
+from generator.templates.polaroidRust import PolaroidRust
 from pygments.lexers import get_lexer_by_name
 
 from generator.settings import Settings
@@ -53,10 +55,54 @@ def render_python(post_name: str):
 
 @app.command()
 def render_php(post_name: str):
-    lexer = get_lexer_by_name('php')
     post_path = f"{Settings.BASE_PATH}/posts/php/{post_name}.php"
-    pub = Pub(post_name, post_path, PolaroidPhp, lexer)
-    pub.generate()
+    path = Path(post_path)
+    lexer = get_lexer_by_name('php')
+    if (path.is_file()):
+        pub = Pub(post_name, post_path, PolaroidPhp, lexer)
+        pub.generate()
+    else:
+        post_path = f"{Settings.BASE_PATH}/posts/php/{post_name}/"
+        files = os.listdir(post_path)
+        for index, file in enumerate(files):
+            if file.startswith('__'):
+                continue
+            pub = Pub(f"{post_name}{index}", f"{post_path}{file}", PolaroidPhp, lexer)
+            pub.generate()
+
+@app.command()
+def render_go(post_name: str):
+    post_path = f"{Settings.BASE_PATH}/posts/go/{post_name}.go"
+    path = Path(post_path)
+    lexer = get_lexer_by_name('go')
+    if (path.is_file()):
+        pub = Pub(post_name, post_path, PolaroidGo, lexer)
+        pub.generate()
+    else:
+        post_path = f"{Settings.BASE_PATH}/posts/go/{post_name}/"
+        files = os.listdir(post_path)
+        for index, file in enumerate(files):
+            if file.startswith('__'):
+                continue
+            pub = Pub(f"{post_name}{index}", f"{post_path}{file}", PolaroidGo, lexer)
+            pub.generate()
+
+@app.command()
+def render_rust(post_name: str):
+    post_path = f"{Settings.BASE_PATH}/posts/rust/{post_name}.rs"
+    path = Path(post_path)
+    lexer = get_lexer_by_name('rust')
+    if (path.is_file()):
+        pub = Pub(post_name, post_path, PolaroidRust, lexer)
+        pub.generate()
+    else:
+        post_path = f"{Settings.BASE_PATH}/posts/rust/{post_name}/"
+        files = os.listdir(post_path)
+        for index, file in enumerate(files):
+            if file.startswith('__'):
+                continue
+            pub = Pub(f"{post_name}{index}", f"{post_path}{file}", PolaroidRust, lexer)
+            pub.generate()
     
 if __name__ == "__main__":
     app()
