@@ -7,3 +7,6 @@ typer[all]
 uvicorn
 flask
 matplotlib
+requests
+parsel
+click
