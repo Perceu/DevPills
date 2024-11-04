@@ -1,7 +1,7 @@
-import os 
-# from pygments.styles.tango import TangoStyle as Style 
-# from pygments.styles.vs import VisualStudioStyle as Style 
-from pygments.styles.dracula import DraculaStyle as Style 
+import os
+from pygments.styles.tango import TangoStyle as Style
+# from pygments.styles.vs import VisualStudioStyle as Style
+# from pygments.styles.dracula import DraculaStyle as Style
 
 class Settings():
     IMAGE_WIDTH = 1080
@@ -17,6 +17,7 @@ class Settings():
     BUN_LOGO = f'{BASE_PATH}/statics/bun.png'
     GO_LOGO = f'{BASE_PATH}/statics/go.png'
     RUST_LOGO = f'{BASE_PATH}/statics/rust.png'
+    LUA_LOGO = f'{BASE_PATH}/statics/lua.png'
     FONT_FACE = f'{BASE_PATH}/statics/FiraCode.ttf'
     BACKGROUND_RGBA = (0,0,0,255)
     CODE_THEME = Style

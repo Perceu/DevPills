@@ -4,7 +4,7 @@ from generator.settings import Settings
 from generator.helpers import DrawHelpers
 
 
-class PolaroidBun():
+class PolaroidLua():
 
     signature = "@perceubertoletti.dev"
 
@@ -23,7 +23,7 @@ class PolaroidBun():
         return Image.open(Settings.POWERED_BY).convert('RGBA')
 
     def get_logo(self):
-        return Image.open(Settings.BUN_LOGO)
+        return Image.open(Settings.LUA_LOGO)
 
     def generate(self):
         font = self.get_font()
@@ -71,10 +71,10 @@ class PolaroidBun():
         draw_cape = ImageDraw.Draw(final_image)
         draw_cape.text((Settings.PADDING+25, Settings.PADDING+25), "Code Snippet", font=font, fill=DrawHelpers.invertColor(Settings.CODE_THEME.background_color))
         text_width, text_height = DrawHelpers.get_text_dimensions(self.title.title(), font_title)
-        draw_cape.text(((Settings.IMAGE_WIDTH-text_width)//2, int(Settings.IMAGE_HEIGHT/2)+100), self.title.title(), font=font_title, fill=DrawHelpers.invertColor(Settings.CODE_THEME.background_color))
+        draw_cape.text(((Settings.IMAGE_WIDTH-text_width)//2, int(Settings.IMAGE_HEIGHT/2)+200), self.title.title(), font=font_title, fill=DrawHelpers.invertColor(Settings.CODE_THEME.background_color))
         logo = self.get_logo()
         width_logo, height_logo = logo.size
-        final_image.paste(logo, (int(Settings.IMAGE_WIDTH/2)-int(width_logo/2), int(Settings.IMAGE_HEIGHT/2)-200), logo)
+        final_image.paste(logo, (int(Settings.IMAGE_WIDTH/2)-int(width_logo/2), int(Settings.IMAGE_HEIGHT/2)-330), logo)
         final_image.save(f"{self.output}_capa.png")
 
     def run(self):
